@@ -1,5 +1,5 @@
 # Public Health Data Visualization System
-An end-to-end visual analytics pipeline built on the **Global Health Statistics** dataset (1,000,000 records with ).  
+An end-to-end visual analytics pipeline built on the **Global Health Statistics** dataset (1,000,000 records with 22 fields).  
 Developed progressively across six milestones as part of a group data visualization project.
 
 ---
