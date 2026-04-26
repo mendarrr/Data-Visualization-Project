@@ -16,7 +16,7 @@ Data-Visualization-Project/
 ├── notebooks/
 │   ├── load_dataset.ipynb    # Always run this first before any milestone notebook
 │   ├── milestone1_foundations.ipynb
-│   ├── milestone2_pipeline.ipynb
+│   ├── milestone2_pipeline.ipynbV
 │   ├── milestone3_visualization.ipynb
 │   ├── milestone4_statistics.ipynb
 │   ├── milestone5_dashboard.ipynb
@@ -46,7 +46,7 @@ Data-Visualization-Project/
 ## First-Time Setup (Run Once After Cloning) => Cloning is done after forking the repository from repo owner
 ### Step 1 — Clone the repo
 ```bash
-git clone git@github.com:mendarrr/Data-Visualization-Project.git
+git clone git@github.com:<username>/Data-Visualization-Project.git
 cd Data-Visualization-Project
 ```
 ### Step 2 — Create the virtual environment
