@@ -1,5 +1,6 @@
 # Public Health Data Visualization System
-An end-to-end visual analytics pipeline built on the **Global Health Statistics** dataset (1,000,000 records with ).  
+
+An end-to-end visual analytics pipeline built on the **Global Health Statistics** dataset (1,000,000 records with 22 fields).  
 Developed progressively across six milestones as part of a group data visualization project.
 
 ---
@@ -9,11 +10,11 @@ Developed progressively across six milestones as part of a group data visualizat
 ```
 Data-Visualization-Project/
 ├── data/
-│   ├── raw/                  # Contains the Original Dataset
-│   │   └── DATA_SOURCE.md    # Our shared Google Drive link to download the dataset
-│   └── processed/            # Cleaned/transformed outputs from the milestone pipelines deliverables
+│   ├── raw/                  # Original dataset — NOT pushed to GitHub
+│   │   └── DATA_SOURCE.md    # Google Drive link to download the dataset
+│   └── processed/            # Cleaned/transformed outputs from milestone pipelines
 ├── notebooks/
-│   ├── load_dataset.ipynb    # Always run this before any other notebook to load the dataset locally
+│   ├── load_dataset.ipynb    # Always run this first before any milestone notebook
 │   ├── milestone1_foundations.ipynb
 │   ├── milestone2_pipeline.ipynb
 │   ├── milestone3_visualization.ipynb
@@ -21,9 +22,9 @@ Data-Visualization-Project/
 │   ├── milestone5_dashboard.ipynb
 │   └── milestone6_research.ipynb
 ├── docs/
-│   ├── charts/               # Saved Charts and Plots
+│   ├── charts/               # Saved chart outputs
 │   ├── data_schema.md        # Variable definitions and types
-│   └── data_quality_report.md # For Quality Assessment Deliverables
+│   └── data_quality_report.md
 ├── .gitignore
 ├── requirements.txt
 └── README.md
@@ -36,31 +37,107 @@ Data-Visualization-Project/
 - **Name:** Global Health Statistics
 - **Size:** 1,000,000 rows × 22 columns
 - **Source:** [Google Drive Folder](https://drive.google.com/drive/folders/1MmV6mQYdxmTR9UXO5maEgoEn_R1Y2vdW)
-- **Key variables:** Country, Year, Disease Name, Disease Category, Mortality Rate, Healthcare Access, Recovery Rate, Per Capita Income, and etc.
+- **Key variables:** Country, Year, Disease Name, Disease Category, Mortality Rate, Healthcare Access, Recovery Rate, Per Capita Income, and more.
 
-> Our raw csv is excluded from git because it has a storage capacity of > 100MB
+> The raw CSV is excluded from Git (>100MB). Follow the setup steps below to download it.
 
 ---
 
-## Project Setup
-
-### 1. Clone the repo
+## First-Time Setup (Run Once After Cloning) => Cloning is done after forking the repository from repo owner
+### Step 1 — Clone the repo
 ```bash
-git clone <git@github.com:mendarrr/Data-Visualization-Project.git>
+git clone git@github.com:mendarrr/Data-Visualization-Project.git
 cd Data-Visualization-Project
 ```
+### Step 2 — Create the virtual environment
 
-### 2. Install dependencies
+**Ubuntu/Mac:**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+**Windows:**
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+> Your terminal prompt should now show `(.venv)` — this means the environment is active.
+
+### Step 3 — Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Get the dataset
-Download `Global Health Statistics.csv` from the [Google Drive link](https://drive.google.com/drive/folders/1MmV6mQYdxmTR9UXO5maEgoEn_R1Y2vdW) and place it in `data/raw/`.  
-Or just run `notebooks/load_dataset.ipynb` — it will download it for you if the file is missing (Alternative to cater for difference in working environments ie Windows/Ubuntu)
+### Step 4 — Register the Jupyter kernel
+```bash
+python -m ipykernel install --user --name=dataviz --display-name "Python (dataviz)"
+```
 
-### 4. Run the loader
-Open and run `notebooks/load_dataset.ipynb` to verify your environment is connected correctly before starting any milestone work... Ensure you change the kernel to Python Dataviz in your IDE (VS Code)
+### Step 5 — Download the dataset
+
+**Ubuntu/Mac:**
+```bash
+python -c "import gdown; gdown.download('https://drive.google.com/uc?id=1cug4qWE6qFArHmYwcXUdDMaJIfmUzAZD', 'data/raw/Global Health Statistics.csv', quiet=False)"
+```
+
+**Windows:**
+```bash
+python -c "import gdown; gdown.download('https://drive.google.com/uc?id=1cug4qWE6qFArHmYwcXUdDMaJIfmUzAZD', 'data/raw/Global Health Statistics.csv', quiet=False)"
+```
+> Same command for both — Note => just make sure your `.venv` is active first.
+
+### Step 6 — Select the kernel in VS Code
+1. Open any `.ipynb` notebook in VS Code
+2. Click the kernel selector (top right corner)
+3. Select **Python (dataviz)**
+
+### Step 7 — Verify everything works
+Open and run `notebooks/load_dataset.ipynb` — it should print:
+```
+All checks passed. Dataset is ready.
+```
+
+---
+
+## Daily Workflow (Every Time You Work)
+### Activate the virtual environment first
+**Ubuntu/Mac:**
+```bash
+source .venv/bin/activate
+```
+**Windows:**
+```bash
+.venv\Scripts\activate
+```
+
+### Then sync with main before starting
+```bash
+git pull origin main --rebase
+```
+
+### Create your named feature branch if you haven't already
+```bash
+git checkout -b yourname/milestone1-task
+```
+
+### Save and push your work
+```bash
+git add .
+git commit -m "Brief description of what you did"
+git push origin yourname/milestone1-task
+```
+
+> Then open a Pull Request on GitHub and tag the team lead (Repo owner) for review before merging.
+
+---
+
+## Rules
+
+- Never commit directly to `main`
+- Never push files from `data/raw/` or `data/processed/`
+- Never add new folders or files — use the existing structure only
+- End-of-day merging is done with all members present
 
 ---
 
@@ -74,24 +151,3 @@ Open and run `notebooks/load_dataset.ipynb` to verify your environment is connec
 | 4 | Statistical Inference & Analytical Modeling | `milestone4_statistics.ipynb` | 🔲 |
 | 5 | Interactive Visual Analytics System | `milestone5_dashboard.ipynb` | 🔲 |
 | 6 | Research Contribution & Advanced Analytics | `milestone6_research.ipynb` | 🔲 |
-
----
-
-## Team Workflow
-
-- Each member works on a **named feature branch**: `name/milestone1-task`, `name/milestone2-task`, etc.
-- Never commit directly to `main`.... Instead, In your IDE Terminal:
-- `git pull origin main .` # First Step always when you begin the days work
-- `git checkout -b your_branch_name` # This is you entering your own branch in your local machine... after completing and checking that it is error free:
-- `git add .`
-- `git commit -m "Explain whatever changes you've made in a brief message"`
-- `git push origin your_branch_name`
-- > The above steps will be repeated as you do your project and make whatever changes
-- **End of the Day Merging**: Will be done with all members present using:
-- `git checkout -b main`
-- `git merge your_branch_name`
-  
-- **Never** push files from `data/raw/` or `data/processed/` to GitHub.
-- No Folder or file to be added... Use the Existing Ones
-- Open a Pull Request and tag the team lead for review before merging.
- 
