@@ -1,8 +1,8 @@
 # Milestone 1 Documentation: Data Representation & Foundations
 
-**Project:** Public Health Data Visualization System
-**Dataset:** Global Health Statistics (1,000,000 records × 22 columns)
-**Period:** 20th April - 27th April
+###### **Project:** Public Health Data Visualization System
+##### **Dataset:** Global Health Statistics (1,000,000 records × 22 columns)
+#####**Period:** 20th April - 27th April
 
 ---
 
