@@ -10,11 +10,11 @@ Developed progressively across six milestones as part of a group data visualizat
 2. Asami Mary
 3. Annbel Muthoni
 4. Christine Wambui
-5. Chrystabel
+5. Chrystabel Young
 6. Esther Jubilee
 7. Joyce Wambu
 8. Rita Kimani
-9. Sharon
+9. Sharon Wanja
 
 ## Project Structure
 
