@@ -1,0 +1,52 @@
+[33m76cf905[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mJubiii/documentation[m[33m, [m[1;31morigin/Jubiii/documentation[m[33m)[m Adding scripts for data cleaning in milestone 2
+[33m620d912[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Merge branch 'abby/data-acquisition' into main
+[33mddd73e4[m `Added code to display dataset information and first 5 rows of the Global Health Statistics dataset.`
+[33m684a5e5[m Merge branch 'main' into main
+[33mb927d03[m Adding scripts for data cleaning in milestone 2
+[33m1bda0a3[m Merge pull request #30 from mendarrr/abby/data-acquisition
+[33m2b195cb[m Setting up and loading data for Milestone 2
+[33m73dfaf5[m Merge pull request #29 from justchrys/chrys/dataschemaanddescriptivestats
+[33m726935a[m Completed Milestone 1: Data schema, descriptive stats, and 4 visualizations
+[33ma2ff1da[m Milestone 2: initial data processing pipeline work
+[33mf425b07[m Merge pull request #28 from mendarrr/abby/data-acquisition
+[33maeae5da[m `Updated README.md to include username placeholder in git clone command`
+[33mb2c54d4[m `Updated README.md to include username placeholder in git clone command`
+[33maa9d7fc[m Merge pull request #27 from mendarrr/revert-25-chrys/data-schema-and-descriptive-stats
+[33me04f8b1[m Revert "Add 4 milestone visualization charts with generation code"
+[33m07f190d[m Merge pull request #26 from justchrys/main
+[33mdf54b0a[m Merge pull request #25 from justchrys/chrys/data-schema-and-descriptive-stats
+[33m1a86e3c[m Merge branch 'main' into chrys/data-schema-and-descriptive-stats
+[33m4e9daed[m Added 4 chart generation code and updated charts
+[33m302fe0b[m Merge pull request #24 from mendarrr/abby/data-acquisition
+[33mb134bdd[m Merge pull request #23 from justchrys/chrys/data-schema-and-descriptive-stats
+[33m8e15f28[m Merge pull request #21 from mendarrr/main
+[33m42d1f62[m Merge pull request #19 from justchrys/chrys/add-charts
+[33m0519e3e[m Merge pull request #20 from mendarrr/abby/data-acquisition
+[33m1a24cef[m `Updated milestone 2 data processing and transformation notebook with team assignments for easy collaboration`
+[33m4320643[m Setting up the Milestone 2 Notebook for collaboration
+[33m188f1d6[m `Updated milestone 2 data processing and transformation notebook with team assignments for easy collaboration`
+[33m4cd1855[m Setting up the Milestone 2 Notebook for collaboration
+[33m3d1c269[m Merge pull request #1 from mendarrr/main
+[33m03b9b47[m Merge pull request #2 from mendarrr/main
+[33mae12b8a[m Added 4 charts: mortality distribution, healthcare vs recovery, healthcare access trend, and mortality by category
+[33m9d89522[m Merge pull request #18 from mendarrr/main
+[33m9a237fa[m Merge pull request #17 from mendarrr/revert-16-abby/data-acquisition
+[33m5d76e53[m Revert "Solving overwrite conflicts"
+[33mb5b0b5b[m Merge pull request #16 from mendarrr/abby/data-acquisition
+[33m0801f41[m Solving overwrite conflicts
+[33m899bfac[m Merge pull request #15 from mendarrr/abby/data-acquisition
+[33m84b67fc[m Merge pull request #14 from mendarrr/main
+[33m0f12b86[m Merge pull request #13 from justchrys/chrys/data-schema-and-descriptive-stats
+[33m5265083[m Completed Milestone 1: Data schema, descriptive statistics, and visual outputs
+[33m2f3ce13[m Merge pull request #12 from mendarrr/abby/data-acquisition
+[33mfa5ad9e[m Merge pull request #11 from mendarrr/main
+[33md222a83[m Merging abby to main for readme updates with revised workflow
+[33mcc24766[m `Updated notebook metadata for Milestone 5 and Milestone 6`
+[33m1de15f3[m `Updated README.md and notebooks/milestone2_data_processing_transformation.ipynb, notebooks/milestone3_visualization_exploratory_analysis.ipynb, notebooks/milestone4_statistical_inference_analytical_modeling.ipynb, and requirements
+[33m8960b54[m Making changes and running the notebooks to check for errors
+[33m9a3fa33[m Merge pull request #10 from mendarrr/abby/data-acquisition
+[33ma7941ce[m Making changes and running the notebooks to check for errors
+[33mf8bd007[m `Update milestone notebooks with metadata and TODO comments for easy multi-tasking`
+[33m3a47e3c[m `Updated README.md and load_dataset.ipynb with minor changes`
+[33m17599cf[m Initial commit of structure  and setup documentation
+[33m5102ddd[m Initial commit
