@@ -3,7 +3,6 @@
 ##### **Project:** Public Health Data Visualization System
 ##### **Dataset:** Global Health Statistics (1,000,000 records × 22 columns)
 ##### **Period:** 20th April - 27th April
-
 ---
 
 ## 1. What Changed
