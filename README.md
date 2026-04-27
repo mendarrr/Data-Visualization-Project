@@ -5,6 +5,17 @@ Developed progressively across six milestones as part of a group data visualizat
 
 ---
 
+## Group Members
+1. Abby Sarah
+2. Asami Mary
+3. Annbel Muthoni
+4. Christine Wambui
+5. Chrystabel
+6. Esther Jubilee
+7. Joyce Wambu
+8. Rita Kimani
+9. Sharon
+
 ## Project Structure
 
 ```
