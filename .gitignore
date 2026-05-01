@@ -29,6 +29,8 @@ data/raw/*.zip
 data/raw/*.gz
 data/processed/*.csv
 data/processed/*.xlsx
+data/processed/*.gz
+data/processed/*.parquet
 
 # ── OS files ──────────────────────────────────────────────────────────────────
 .DS_Store
