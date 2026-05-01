@@ -39,6 +39,7 @@ Thumbs.db
 .idea/
 .qodo/
 .claude/
+.github/
 
 # ── Generated chart outputs — do not push ────────────────────────────────────
 docs/charts/
