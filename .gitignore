@@ -38,6 +38,7 @@ Thumbs.db
 .vscode/settings.json
 .idea/
 .qodo/
+.claude/
 
 # ── Generated chart outputs — do not push ────────────────────────────────────
 docs/charts/
