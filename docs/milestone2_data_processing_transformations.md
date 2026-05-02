@@ -131,13 +131,12 @@ A comprehensive quality audit was performed to assess data **structure**, **comp
 **Cross-Tabulation** - Counted records per Disease Category * Age Group cell using `pd.crosstab` to verify dataset balance. Cell counts ranged from 22,479 to 23,181, confirming no stratified sampling is needed.
 
 
----
 
 ### 6. Feature Engineering
 
 Feature engineering transforms raw columns into analytically richer representations. Eleven new features were created across four categories: ratio/derived metrics, binary flags, time-based features, and label encodings. Each feature is motivated by a specific analytical question the visualization system needs to answer.
 
----
+
 
 ### 1. Ratio & Derived Numerical Features
 
@@ -153,7 +152,7 @@ df['Severity_Index'] = df['Mortality Rate (%)'] / (df['Prevalence Rate (%)'] + 1
 
 **Implementation note:** `1e-5` is added to the denominator to prevent division by zero in edge cases where `Prevalence Rate` is 0.
 
----
+
 
 #### `DALY_Intensity`
 
@@ -165,7 +164,7 @@ df['DALY_Intensity'] = df['DALYs'] / df['Population Affected']
 
 **Why it was created:** Total DALYs scale with population size. Dividing by `Population Affected` normalises the burden to the individual level, making it possible to compare diseases across countries and demographic groups of different sizes.
 
----
+
 
 ### 2. Binary & Flag Features
 
@@ -181,7 +180,7 @@ df['Vaccine_Available_Flag'] = (
 
 **Why it was created:** Converts the `Yes/No` string column into a machine-readable integer flag, enabling direct use in aggregations and comparisons (e.g., average mortality rate where vaccine = 1 vs. 0).
 
----
+
 
 #### `High_Risk_Demographic`
 
@@ -193,7 +192,7 @@ df['High_Risk_Demographic'] = df['Age Group'].str.lower() == '61+'
 
 **Why it was created:** The 61+ age group is consistently the most vulnerable across disease categories. This boolean flag enables fast filtering and segmentation for visualizations focused on elderly populations.
 
----
+
 
 #### `Avg_Incidence_Disease`
 
@@ -205,7 +204,7 @@ df['Avg_Incidence_Disease'] = df.groupby('Disease Name')['Incidence Rate (%)'].t
 
 **Why it was created:** Allows each row to be compared against its disease-level baseline, which is useful for identifying countries or years where a disease is spreading faster or slower than average.
 
----
+
 
 #### `Mortality_YoY_Change`
 
@@ -222,7 +221,7 @@ df['Mortality_YoY_Change'] = (
 
 **Why it was created:** Enables trend detection — identifying whether a disease is becoming more or less deadly over time in a specific country. First-year records within each group will have `NaN` (expected behaviour, as there is no prior year to diff against).
 
----
+
 
 #### `Weighted_Time_Impact`
 
@@ -234,7 +233,7 @@ df['Weighted_Time_Impact'] = df['Improvement in 5 Years (%)'] * (df['Year'] - 20
 
 **Why it was created:** A 5% improvement reported in 2024 represents a larger cumulative context than the same improvement in 2001. This weighting allows the improvement metric to be interpreted relative to the time elapsed in the dataset.
 
----
+
 
 ### 3. Time-Based Features
 
@@ -248,7 +247,6 @@ df['decade'] = (df['Year'] // 10) * 10
 
 **Why it was created:** Groups years into decades for higher-level temporal aggregations and visualizations comparing 2000s vs. 2010s vs. 2020s health trends.
 
----
 
 ### 4. Label Encoding
 
@@ -259,18 +257,19 @@ from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 ```
 
-df['Demographic_encoded']        = le.fit_transform(df['Age Group'].str.lower())
+
+```df['Demographic_encoded']        = le.fit_transform(df['Age Group'].str.lower())
 df['Gender_Encoded']             = le.fit_transform(df['Gender'].str.lower())
 df['Disease_Category_Encoded']   = le.fit_transform(df['Disease Category'].str.lower())
 ```
 
 | New Column | Source Column | Encoding |
-|---|---|---|
+| --- | --- | --- |
 | `Demographic_encoded` | `Age Group` | 0-18 → 0, 19-35 → 1, 36-60 → 2, 61+ → 3 |
 | `Gender_Encoded` | `Gender` | female → 0, male → 1, other → 2 |
 | `Disease_Category_Encoded` | `Disease Category` | Alphabetical label encoding (0–10) |
 
----
+
 
 ### Engineered Features Summary
 
@@ -288,9 +287,9 @@ df['Disease_Category_Encoded']   = le.fit_transform(df['Disease Category'].str.l
 | `Gender_Encoded` | int32 | `Gender` | Label-encoded gender |
 | `Disease_Category_Encoded` | int32 | `Disease Category` | Label-encoded disease category |
 
----
 
-## Part 6 — Final Pipeline & Dataset Export
+
+## 7. Final Pipeline & Dataset Export
 
 ### Export Details
 
@@ -310,7 +309,7 @@ for col in df.select_dtypes(include=['int64']).columns:
     if df[col].min() > -2147483648 and df[col].max() < 2147483647:
         df[col] = df[col].astype('int32')
 
-df.to_csv(PROCESSED_PATH, index=False, compression='gzip')
+df.to_csv(PROCESSED_PATH, index=False, compression='gzip') 
 ```
 
 | Property | Value |
@@ -322,7 +321,7 @@ df.to_csv(PROCESSED_PATH, index=False, compression='gzip')
 
 > **Why gzip?** The 1M-row dataset is large in raw form. gzip compression significantly reduces storage and transfer size while remaining natively readable by pandas via `pd.read_csv(..., compression='gzip')`.
 
----
+
 
 ### Data Dictionary
 
@@ -369,7 +368,7 @@ df.to_csv(PROCESSED_PATH, index=False, compression='gzip')
 | `Gender_Encoded` | int32 | Label-encoded Gender | `LabelEncoder` on `Gender` |
 | `Disease_Category_Encoded` | int32 | Label-encoded Disease Category | `LabelEncoder` on `Disease Category` |
 
----
+
 
 ### Pipeline Summary
 
