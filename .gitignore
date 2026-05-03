@@ -45,3 +45,12 @@ Thumbs.db
 
 # ── Generated chart outputs — do not push ────────────────────────────────────
 docs/charts/
+# ── Test suite ───────────────────────────────────────────────────────────────────────────────
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+test_*/
+tests/
+test_suite_analysis/
+test_suite_analysis
