@@ -54,3 +54,4 @@ test_*/
 tests/
 test_suite_analysis/
 test_suite_analysis
+managed_context/
