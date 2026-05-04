@@ -1,3 +1,4 @@
+
  # Milestone 3 Documentation : Evolutionary failure  log
 **Project: Public Health Data Visualization System**
 
@@ -18,6 +19,8 @@
 | 5 | The feature `Weighted_Time_Impact` was visually present but added no insight. | M3 – Any chart using time-based scaling | Derived from short time range (2000–2024) – scaling added no meaningful differentiation. | M4 recommends dropping `Weighted_Time_Impact` before M5 to avoid noise in dashboard filters. |
 | 6 | The scatter plot of Per Capita Income vs. Healthcare Access (%) showed a strong positive correlation visually – points clustered along an upward slope. | M3 – Pair 2 (Core Relationships Team), scatter plot | Human eye naturally exaggerates patterns; a few high-income, high-access countries created an illusion of a strong trend. | M4 regression returned R² = 0.038 – only 3.8% of variance explained. Action: Always pair scatter plots with correlation coefficients or R² values in M5/M6 dashboards. |
 | 7 | The scatter plot of Income vs. Mortality Rate suggested a clean negative linear relationship (higher income = lower mortality). | M3 – Pair 2, scatter plot | Visual appeared linear, but actual relationship was non-linear (diminishing returns: big mortality drops at low income, flat at high income). Residual plot later showed a curved pattern. | M4 regression residual analysis revealed non-linearity. Action: In M5/M6, add residual plots or use LOESS smoothing instead of assuming linearity. |
+| 8 | The scatter plot implied a strong relationship between income and healthcare access. The insight written by Pair 4 claimed this as a meaningful pattern. | M3 – Pair 4 (Design Justification), based on Pair 2's scatter plot | M4 regression found that neither income nor healthcare access is a significant predictor of mortality. The visual correlation was not confirmed by statistical modeling. | In M4, note that this finding is descriptive only. Do not claim causal or predictive strength without proper testing. |
+| 9 | The choropleth map was used to claim healthcare access inequality as a substantive geographic insight. | M3 – Pair 4 (Design Justification), based on Pair 1's choropleth map | M4 did not run any spatial hypothesis test (e.g., spatial autocorrelation or regional significance). The map is purely descriptive. | Add a separate spatial validation step in M4 (e.g., Moran's I or regional t‑tests), or clearly label the map as visual evidence only – not statistically confirmed. |
 ---
 
 ## Summary for Final Report
