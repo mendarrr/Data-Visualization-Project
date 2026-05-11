@@ -5,6 +5,7 @@
 # Dataset: Global Health Statistics (1,000,000 rows × 22 columns)
 # =============================================================================
 
+# Run app using streamlit run dashboard/webapp.py
 import streamlit as st
 import pandas as pd
 import numpy as np
