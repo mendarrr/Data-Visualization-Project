@@ -62,7 +62,7 @@ st.markdown("""
     .model-metric { background: #1e2537; border: 1px solid #2e3a52; border-radius: 8px; padding: 1rem; text-align: center; }
     .model-metric .val { font-size: 1.6rem; font-weight: 700; color: #4fc3f7; }
     .model-metric .lbl { font-size: 0.75rem; color: #7a8aaa; text-transform: uppercase; }
-    #MainMenu, footer, header { visibility: hidden; }
+    #MainMenu, footer { visibility: hidden; }
 </style>
 """, unsafe_allow_html=True)
 
