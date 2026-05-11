@@ -88,6 +88,35 @@ AGE_ORDER = ['0-18', '19-35', '36-60', '61+']
 # ══════════════════════════════════════════════════════════════════════════════
 # DATA LOADING  — tries processed gz first, then raw CSV
 # ══════════════════════════════════════════════════════════════════════════════
+
+def download_raw_dataset(raw_path: Path):
+    raw_path.parent.mkdir(parents=True, exist_ok=True)
+    download_url = 'https://drive.google.com/uc?id=1cug4qWE6qFArHmYwcXUdDMaJIfmUzAZD'
+    try:
+        import gdown
+    except ImportError:
+        raise FileNotFoundError(
+            "Dataset not found locally and 'gdown' is not installed. "
+            "Please add gdown to requirements.txt or place the dataset in data/raw/."
+        )
+
+    st.warning('Dataset not found locally. Attempting to download it now...')
+    gdown.download(download_url, str(raw_path), quiet=False)
+    if not raw_path.exists():
+        raise FileNotFoundError(
+            "Automatic dataset download failed. Please add 'Global Health Statistics.csv' to data/raw/."
+        )
+    return raw_path
+
+
+def load_sample_dataset(sample_path: Path):
+    if sample_path.exists():
+        st.warning('Using demo sample dataset because the full dataset is unavailable.')
+        return pd.read_csv(sample_path)
+    raise FileNotFoundError(
+        "Demo sample dataset not found. Please add 'data/sample/global_health_sample.csv' to the repo."
+    )
+
 @st.cache_data(show_spinner=False)
 def load_data():
     PROJECT_ROOT = Path().resolve().parent if Path().resolve().name == 'notebooks' else Path().resolve()
@@ -96,16 +125,20 @@ def load_data():
         PROJECT_ROOT / 'data' / 'raw' / 'Global Health Statistics.csv',
         PROJECT_ROOT / 'Global Health Statistics.csv',
     ]
+    sample_path = PROJECT_ROOT / 'data' / 'sample' / 'global_health_sample.csv'
     df = None
     for p in candidates:
         if p.exists():
             df = pd.read_csv(p, compression='gzip') if str(p).endswith('.gz') else pd.read_csv(p)
             break
+
     if df is None:
-        raise FileNotFoundError(
-            "Dataset not found. Place 'Global Health Statistics.csv' in:\n"
-            "  data/raw/   OR   data/processed/ (as .csv.gz)   OR   project root"
-        )
+        raw_path = PROJECT_ROOT / 'data' / 'raw' / 'Global Health Statistics.csv'
+        try:
+            raw_path = download_raw_dataset(raw_path)
+            df = pd.read_csv(raw_path)
+        except Exception:
+            df = load_sample_dataset(sample_path)
 
     # ── Derived / engineered columns ──────────────────────────────────────────
     if 'Severity_Index' not in df.columns:
